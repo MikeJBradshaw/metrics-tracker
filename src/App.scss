@@ -1,0 +1,278 @@
+@use '~ag-grid-community/styles' as ag;
+// @use 'ag-grid-community/styles/ag-theme-alpine.css';
+@use 'node_modules/react-datepicker/dist/react-datepicker.css';
+@use "~highcharts/css/highcharts";
+
+$card-text-dark: #BFBFBF;
+$card-text: #555;
+$es-orange: #fd6600;
+
+.highcharts-container {
+  // Colors for data series and points.
+  $colors: #fd6600 #673ab7 #f7a35c #8085e9 #f15c80 #e4d354 #2b908f #f45b5b darkgreen #06b734 #4cd7a8 #ffc107 #607d8b #0c4c42 #443f5e #9670aa #fa8dd6 #e97a65;
+
+  // Fonts
+  $font-family: "Lato";
+  $title-font-size: 17px;
+  $subtitle-font-size: 1em;
+  $legend-font-size: 12px;
+  $axis-labels-font-size: 12px;
+
+  .highcharts-title, .highcharts-subtitle {
+    cursor: default;
+  }
+
+  .highcharts-legend-item {
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: -2px !important;
+  }
+
+  // menu items
+  .highcharts-menu {
+    font-size: 0.935rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    border-radius: 0.25rem;
+    border: none !important;
+    transition: none;
+    outline: 0;
+
+    .highcharts-menu-item {
+      color: #4e4e4e;
+      padding: 5px 10px !important;
+
+      &:hover {
+        background: #375a7f;
+        color: #fff !important;
+      }
+    }
+
+    hr {
+      margin: 5px 10px !important;
+      border-top: 1px solid #dee2e6;
+    }
+  }
+}
+
+@include ag.grid-styles((
+    // include multiple theme files and set specific parameters on each
+    theme: custom-react,
+    extend-theme: alpine-dark,
+    --ag-header-background-color: rgb(234, 191, 177),
+    --ag-header-height: 80px,
+
+    // setting the active color will use color blending to update various
+    // other colors eg. the row hover color will be set to a light pink
+    --ag-alpine-active-color: red,
+));
+
+.app-header {
+  background-color: white;
+  color: $card-text;
+  padding: 15px 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  .app-name {
+    color: $es-orange;
+    margin: 5px;
+    font-size: 32px;
+    // font-weight: bolder;
+  }
+}
+
+.app-header svg {
+  stroke: black;
+}
+
+.highcharts-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 1px 0;
+}
+
+.a {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.select-group {
+  width: 100%;
+  height: calc(100vh - 65px);
+
+  .display-text {
+    color: #BDBDBD;
+    font-size: 50px;
+  }
+}
+
+.metrics {
+  width: 100%;
+  height: calc(100vh - 75px);
+
+  .stats-box {
+    justify-content: space-around;
+  }
+
+  .chart-box {
+    justify-content: space-around;
+  }
+
+  .chart-box-tabs {
+    justify-content: space-around;
+    min-width: 99.9%;
+  }
+
+  .dashboard-card {
+    padding: 5px !important;
+    width: 100% !important;
+    margin: 10px;
+  }
+
+  .chart-card {
+    padding: 10px !important;
+    width: 100% !important;
+  }
+
+  .card-title {
+    font-size: 20px;
+    color: $card-text;
+  }
+
+  .no-stats {
+    padding-top: 10px;
+  }
+
+  .card-data {
+    font-size: 48px;
+    color: $card-text;
+  }
+
+  .card-stats {
+    font-size: 16px;;
+    color: $card-text;
+  }
+  
+  .actually-working-tabs {
+    justify-content: center;
+  }
+
+  .metrics-tab span {
+    color: $es-orange  !important;
+  }
+
+  .metrics-tab div {
+    border-color: $es-orange !important;
+  }
+  
+  .active-metrics-tab span {
+    color: black !important;
+  }
+
+  .active-metrics-tab div {
+    border-color: black !important;
+  }
+}
+
+.dashboard-card-body {
+  position: relative;
+
+  .settings-button {
+    width: 50px;
+    z-index: 99;
+    position: absolute;
+  }
+}
+
+.drop-container {
+  min-width: 300px !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px  !important;
+
+  .settings-menu {
+    .settings-title {
+      justify-content: space-between;
+      height: 42px;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      
+      .settings-clear {
+        width: 30px;
+        margin-left: 10px;
+        padding: 0;
+      }
+
+      .settings-clear svg {
+        width: 20px;
+        height: 20px;
+        stroke: black;
+      }
+
+      // TODO: rename to close
+      .settings-apply {
+        width: 30px;
+        margin-right: 10px;
+      }
+
+      .settings-apply svg {
+        width: 18px;
+        height: 18px;
+        stroke: black;
+      }
+    }
+
+    .menu-header {
+      color: black;
+      font-size: 18;
+    }
+  }
+}
+
+// THEMES
+.dark {
+  min-width: 1100px;
+
+  .select-group {
+    background-color: #141519;
+  }
+
+  .metrics {
+    background-color: #141519;
+  }
+
+  .dashboard-card {
+    background-color: #222;
+  }
+
+  .chart-card {
+    background-color: #222;
+  }
+
+  .card-title {
+    color: #BCD6D4;
+  }
+
+  .card-data {
+    color: $card-text-dark;
+  }
+
+  .card-stats {
+    color: $card-text-dark;
+  }
+
+  .tab-class span {
+    color: $card-text-dark;
+  }
+
+  // .ag-header-viewport {
+  //   background-color: #fd6600 !important;
+  // }
+
+  // .ag-row-even {
+  //   background-color: lightGrey !important;
+  // }
+
+  // .ag-row-odd {
+  //   background-color: grey !important;
+  // }
+}
+
