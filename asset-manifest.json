@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/metrics-tracker/static/css/main.b486cc07.css",
+    "main.js": "/metrics-tracker/static/js/main.e99ddc90.js",
+    "static/js/787.0a9fba52.chunk.js": "/metrics-tracker/static/js/787.0a9fba52.chunk.js",
+    "index.html": "/metrics-tracker/index.html",
+    "main.b486cc07.css.map": "/metrics-tracker/static/css/main.b486cc07.css.map",
+    "main.e99ddc90.js.map": "/metrics-tracker/static/js/main.e99ddc90.js.map",
+    "787.0a9fba52.chunk.js.map": "/metrics-tracker/static/js/787.0a9fba52.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b486cc07.css",
+    "static/js/main.e99ddc90.js"
+  ]
+}
